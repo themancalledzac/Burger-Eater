@@ -4,6 +4,8 @@ USE burger_db;
 CREATE TABLE burgers (
   id int NOT NULL AUTO_INCREMENT,
   burger_name VARCHAR(100) NOT NULL,
-  devoured BOOLEAN DEFAULT false,
+  meat_based BOOLEAN DEFAULT true,
+  price DECIMAL(10, 2) NOT NULL,
+  current_menu BOOLEAN DEFAULT false,
   PRIMARY KEY (id)
 );
