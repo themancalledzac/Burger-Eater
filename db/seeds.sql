@@ -2,16 +2,16 @@ USE burger_db;
 INSERT INTO
   burgers (burger_name, meat_based, price)
 VALUES
-  ("California Ave", "true", "17.99");
+  ("California Ave", TRUE, "17.99");
 INSERT INTO
   burgers (burger_name, meat_based, price)
 VALUES
-  ("Teriyaki Tower", "true", "22.99");
+  ("Teriyaki Tower", TRUE, "22.99");
 INSERT INTO
   burgers (burger_name, meat_based, price)
 VALUES
-  ("The Classic", "true", "12.99");
+  ("The Classic", TRUE, "12.99");
 INSERT INTO
   burgers (burger_name, meat_based, price)
 VALUES
-  ("The Classic, veggie", "false", "13.99");
+  ("The Classic, veggie", FALSE, "13.99");
