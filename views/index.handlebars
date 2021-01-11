@@ -1,9 +1,20 @@
 <h1>Burgers</h1>
 
+<h2> not currently on the menu</h2>
 <ul>
     {{#each burgers}}
     {{#unless current_menu}}
-    {{> burgers/burger-block burger-block}}
+    {{> burgers/burger-block current_menu=false}}
     {{/unless}}
+    {{/each}}
+</ul>
+
+<h2> currently on the menu</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#if current_menu}}
+    {{> burgers/burger-block current_menu=true}}
+    {{/if}}
     {{/each}}
 </ul>
