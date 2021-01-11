@@ -3,9 +3,7 @@
 <h2> not currently on the menu</h2>
 <ul>
     {{#each burgers}}
-    {{#unless current_menu}}
     {{> burgers/burger-block current_menu=false}}
-    {{/unless}}
     {{/each}}
 </ul>
 
