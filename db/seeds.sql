@@ -1,5 +1,5 @@
 USE burger_db;
--- initial burger insert
+-- initial burger inserts
 INSERT INTO
   burgers (
     burger_name,

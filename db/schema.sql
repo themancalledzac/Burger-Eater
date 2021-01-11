@@ -1,7 +1,6 @@
 -- TO DO ---------------------------------------------------------
 -- NEED burger table to FOREIGN key toppings, condiments, and meats
 -- NEED burger price to be addition of all topping/condiment/meat prices included in that burger
--- NEED TO research how to have multiple FOREIGN KEYS
 DROP DATABASE IF EXISTS burger_db;
 CREATE DATABASE burger_db;
 USE burger_db;
