@@ -27,7 +27,7 @@ function objToSql(ob) {
 }
 var orm = {
 
-    all: function (tableInput, callback) {
+    burger_all: function (tableInput, callback) {
         var queryString = "SELECT * FROM burgers";
         connection.query(queryString, function (err, result) {
             if (err) {
@@ -37,7 +37,7 @@ var orm = {
             callback(result);
         });
     },
-    create: function (table, cols, vals, cb) {
+    burger_create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
@@ -53,7 +53,7 @@ var orm = {
             cb(result);
         });
     },
-    update: function (table, objColVals, condition, cb) {
+    burger_update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
         queryString += " SET ";

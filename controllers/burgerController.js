@@ -8,7 +8,7 @@ const burger = require("../models/burger.js");
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
     console.log(burger);
-    burger.all(function (data) {
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -18,7 +18,7 @@ router.get("/", function (req, res) {
 });
 router.get("/about", function (req, res) {
     console.log(burger);
-    burger.all(function (data) {
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -28,17 +28,23 @@ router.get("/about", function (req, res) {
 });
 router.get("/create", function (req, res) {
     console.log(burger);
-    burger.all(function (data) {
-        var hbsObject = {
+    burger.burger_all(function (data) {
+        // need a burger.toppings_all function here?
+        // need a burger.condiment_all function here as well
+        // need a burger.protein_all function here as well
+        var burgers = {
             burgers: data
         };
-        console.log(hbsObject);
-        res.render("create", hbsObject);
+        var toppings = {
+            toppings: data
+        }
+        console.log(burgers);
+        res.render("create", burgers, toppings);
     });
 });
 router.get("/edit", function (req, res) {
     console.log(burger);
-    burger.all(function (data) {
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -48,7 +54,7 @@ router.get("/edit", function (req, res) {
 });
 router.get("/menu", function (req, res) {
     console.log(burger);
-    burger.all(function (data) {
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -59,7 +65,7 @@ router.get("/menu", function (req, res) {
 
 
 router.post("/api/burgers", function (req, res) {
-    burger.create(
+    burger.burger_create(
         [
             "burger_name", "burger_description"
         ], // not ssure if req.body.name or not?
@@ -73,7 +79,7 @@ router.put("/api/burgers/:burger_id", function (req, res) {
     var condition = "id= " + req.params.burger_id;
     console.log("condition", condition);
 
-    burger.update(
+    burger.burger_update(
         {
 
         }
