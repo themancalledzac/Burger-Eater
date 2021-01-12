@@ -1,0 +1,14 @@
+{{!-- BURGER CARD CREATOR --}}
+{{!-- Add random images? another api perhaps --}}
+{{!-- --}}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+        <h2 class="card-title">{{burger_name}}</h2>
+        <p class="card-text">{{burger_description}}</p>
+        <h5 class="card-text">{{price}}</h5>
+        <button class="edit-burger btn btn-primary" data-id="{{burger_id}}">Edit Burger</button>
+        <button class="menu-burger btn btn-primary" data-id="{{burger_id}}">Add Burger To Menu</button>
+    </div>
+</div>

@@ -3,16 +3,18 @@
 <h2> not currently on the menu</h2>
 <ul>
     {{#each burgers}}
-    {{> burgers/burger-block current_menu=false}}
+    <li>{{burger_name}}</li>
+    <li>{{burger_description}}</li>
+    <li>{{burger_price}}</li>
     {{/each}}
 </ul>
 
 <h2> currentlys on the menu</h2>
 
 <ul>
-    {{#each burgers}}
+    {{!-- {{#each burgers}}
     {{#if current_menu}}
     {{> burgers/burger-block current_menu=true}}
     {{/if}}
-    {{/each}}
+    {{/each}} --}}
 </ul>

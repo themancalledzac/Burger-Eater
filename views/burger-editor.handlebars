@@ -1,0 +1,31 @@
+<div class="d-flex h-100 text-center text-white -bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="picture">
+
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">Burger Menu</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link active" aria-current="page" href="index.handlebars">Home</a>
+                    <a class="nav-link" href="layouts/menuCreator.handlebars">Create</a>
+                    <a class="nav-link" href="layouts/about.hanlebars">About</a>
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
+            {{#each burgers}}
+
+            {{/each}}
+        </main>
+
+        <form class="create-form">
+
+            <div class="form-group">
+                <label for="ca">Burger Name:</label>
+                <input type="text" id="ca" name="name">
+            </div>
+
+            <button type="submit">Add Burger</button>
+        </form>
+    </div>
+</div>

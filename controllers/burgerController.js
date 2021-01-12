@@ -16,6 +16,46 @@ router.get("/", function (req, res) {
         res.render("index", hbsObject);
     });
 });
+router.get("/about", function (req, res) {
+    console.log(burger);
+    burger.all(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("about", hbsObject);
+    });
+});
+router.get("/create", function (req, res) {
+    console.log(burger);
+    burger.all(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("create", hbsObject);
+    });
+});
+router.get("/edit", function (req, res) {
+    console.log(burger);
+    burger.all(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("edit", hbsObject);
+    });
+});
+router.get("/menu", function (req, res) {
+    console.log(burger);
+    burger.all(function (data) {
+        var hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        res.render("menu", hbsObject);
+    });
+});
 
 
 router.post("/api/burgers", function (req, res) {
