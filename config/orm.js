@@ -80,6 +80,16 @@ var orm = {
             callback(result);
         });
     },
+    burger_toppings_all: function (tableInput, callback) {
+        var queryString = "SELECT * FROM burger_toppings";
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                console.log("all connection error yo", err)
+                throw err;
+            }
+            callback(result);
+        });
+    },
 
 };
 

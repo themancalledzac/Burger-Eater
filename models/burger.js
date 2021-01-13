@@ -26,6 +26,12 @@ var burger = {
             cb(res);
         });
 
+    },
+    burger_toppings_all: function (cb) {
+        orm.burger_toppings_all("burgers", function (res) {
+            cb(res);
+        });
+
     }
 };
 
