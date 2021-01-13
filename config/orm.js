@@ -70,6 +70,16 @@ var orm = {
             cb(result);
         })
     },
+    toppings_all: function (tableInput, callback) {
+        var queryString = "SELECT * FROM toppings";
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                console.log("topping error yo", err)
+                throw err;
+            }
+            callback(result);
+        });
+    },
 
 };
 
