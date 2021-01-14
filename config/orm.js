@@ -27,9 +27,9 @@ function objToSql(ob) {
 }
 var orm = {
 
-    burger_all: function (tableInput, callback) {
-        var queryString = "SELECT * FROM burgers";
-        connection.query(queryString, function (err, result) {
+    select_all: function (table, callback) {
+        var queryString = "SELECT * FROM ??";
+        connection.query(queryString, [table], function (err, result) {
             if (err) {
                 console.log("all connection error yo", err)
                 throw err;
@@ -53,17 +53,11 @@ var orm = {
             cb(result);
         });
     },
-    burger_update: function (table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
+    burger_update: function (table, vals, id, cb) {
+        var queryString = "UPDATE ?? SET current_menu = ? WHERE burger_id =" + id;
 
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString)
-
-        connection.query(queryString, function (err, result) {
+        console.log(queryString);
+        connection.query(queryString, [table, vals,], function (err, result) {
             if (err) {
                 throw err;
             }

@@ -2,8 +2,8 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    burger_all: function (cb) {
-        orm.burger_all("burgers", function (res) {
+    select_all: function (cb) {
+        orm.select_all("burgers", function (res) {
             cb(res);
         });
     },
@@ -14,11 +14,8 @@ var burger = {
         });
     },
 
-    burger_update: function (objColVals, condition, cb) {
-        orm.burger_update("burgers", objColVals, condition, function (res) {
-            cb(res);
-
-        });
+    burger_update: function (vals, id, cb) {
+        orm.burger_update("burgers", vals, id, cb)
     },
 
     toppings_all: function (cb) {

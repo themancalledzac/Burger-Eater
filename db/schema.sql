@@ -32,7 +32,7 @@ CREATE TABLE burger_toppings (
 USE burger_db;
 CREATE TABLE condiments (
   condiment_id INT AUTO_INCREMENT,
-  condiment_name VARCHAR(20) NOT NULL,
+  condiment_name VARCHAR(20) NcOT NULL,
   condiment_price DECIMAL (4, 2),
   condiment_stock INT,
   PRIMARY KEY (condiment_id)
