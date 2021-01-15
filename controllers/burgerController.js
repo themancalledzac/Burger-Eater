@@ -77,16 +77,29 @@ router.post("/api/burgers", function (req, res) {
 
 router.put("/api/burgers/:burger_id", (req, res) => {
 
-    const id = req.params.burger_id;
-    console.log(id);
+    var condition = "burger_id = " + req.params.burger_id;
+    console.log("condition", condition);
 
-    Burger.burger_update([req.body.current_menu], id, result => {
+
+    Burger.burger_update({
+        current_menu: req.body.current_menu
+    }, condition, function (result) {
         if (result.changeRows == 0) {
             return res.status(404).end();
         } else {
             res.status(200).end();
         }
     });
+    // const id = req.params.burger_id;
+    // console.log(id);
+
+    // Burger.burger_update([req.body.current_menu], id, result => {
+    //     if (result.changeRows == 0) {
+    //         return res.status(404).end();
+    //     } else {
+    //         res.status(200).end();
+    //     }
+    // });
 });
 
 module.exports = router;

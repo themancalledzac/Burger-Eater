@@ -4,13 +4,7 @@
 <ul>
     {{#each burgers}}
     {{#unless current_menu}}
-    <li>{{burger_name}}</li>
-    <li>{{burger_description}}</li>
-    <li>{{burger_price}}</li>
-    {{!-- Needs the edit button to link to an edit page --}}
-    <button class="menu-change" data-id="{{burger_id}}" data-newMenu="{{current_menu}}">
-        Add to menu
-    </button>
+    {{>burgers/burger-block current_menu=true}}
     {{/unless}}
     {{/each}}
 </ul>
@@ -20,12 +14,7 @@
 <ul>
     {{#each burgers}}
     {{#if current_menu}}
-    <li>{{burger_name}}</li>
-    <li>{{burger_description}}</li>
-    <li>{{burger_price}}</li>
-    <button class="menu-change" data-id="{{burger_id}}" data-newMenu="{{current_menu}}">
-        Remove from menu
-    </button>
+    {{> burgers/burger-block current_menu=false}}
     {{/if}}
     {{/each}}
 </ul>

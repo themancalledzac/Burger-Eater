@@ -1,7 +1,7 @@
-<li>
-    {{burger_name}}
+<li>{{burger_name}}</li>
+<li>{{burger_description}}</li>
+<li>{{burger_price}}</li>
 
-    {{burger_description}}
-    {{price}}
-
-</li>
+<button class="menu-change" data-id="{{burger_id}}" data-newMenu="{{current_menu}}">
+    {{#if current_menu}}Add to menu{{else}}Remove from menu{{/if}}
+</button>

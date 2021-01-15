@@ -13,16 +13,22 @@ function printQuestionMarks(num) {
 function objToSql(ob) {
     var arr = [];
 
+    // loop through the keys and push the key/value as a string int arr
     for (var key in ob) {
         var value = ob[key];
-
+        // check to skip hidden properties
         if (Object.hasOwnProperty.call(ob, key)) {
+            // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
             }
+            // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+            // e.g. {sleepy: true} => ["sleepy=true"]
             arr.push(key + "=" + value);
         }
     }
+
+    // translate array of strings to a single comma-separated string
     return arr.toString();
 }
 var orm = {
@@ -53,16 +59,29 @@ var orm = {
             cb(result);
         });
     },
-    burger_update: function (table, vals, id, cb) {
-        var queryString = "UPDATE ?? SET current_menu = ? WHERE burger_id =" + id;
-
+    burger_update: function (table, objColVals, condition, cb) {
+        console.log(objColVals);
+        var queryString = "UPDATE " + table;
+        queryString += " SET ";
+        queryString += objToSql(objColVals);;
+        queryString += " WHERE ";
+        queryString += condition;
         console.log(queryString);
-        connection.query(queryString, [table, vals,], function (err, result) {
-            if (err) {
-                throw err;
-            }
+        connection.query(queryString, function (err, result) {
+            if (err) { throw err; }
             cb(result);
-        })
+        });
+
+
+        // var queryString = "UPDATE ?? SET current_menu = ? WHERE burger_id =" + id;
+
+        // console.log(queryString);
+        // connection.query(queryString, [table, vals,], function (err, result) {
+        //     if (err) {
+        //         throw err;
+        //     }
+        //     cb(result);
+        // })
     },
     toppings_all: function (tableInput, callback) {
         var queryString = "SELECT * FROM toppings";

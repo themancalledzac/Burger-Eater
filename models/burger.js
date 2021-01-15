@@ -14,8 +14,11 @@ var burger = {
         });
     },
 
-    burger_update: function (vals, id, cb) {
-        orm.burger_update("burgers", vals, id, cb)
+    burger_update: function (objColVals, condition, cb) {
+        console.log("what is ", objColVals);
+        orm.burger_update("burgers", objColVals, condition, function (res) {
+            cb(res);
+        });
     },
 
     toppings_all: function (cb) {
