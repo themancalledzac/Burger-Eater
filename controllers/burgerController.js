@@ -2,13 +2,13 @@ var express = require("express");
 
 var router = express.Router();
 
-// import the model (Burger.js) to use its database functions.
-const Burger = require("../models/Burger.js");
+// import the model (burger.js) to use its database functions.
+const burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-    console.log(Burger);
-    Burger.select_all(function (data) {
+    console.log(burger);
+    burger.select_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -17,8 +17,8 @@ router.get("/", function (req, res) {
     });
 });
 router.get("/about", function (req, res) {
-    console.log(Burger);
-    Burger.select_all(function (data) {
+    console.log(burger);
+    burger.select_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -27,11 +27,11 @@ router.get("/about", function (req, res) {
     });
 });
 router.get("/create", function (req, res) {
-    console.log(Burger);
-    Burger.burger_all(function (data) {
-        // need a Burger.toppings_all function here?
-        // need a Burger.condiment_all function here as well
-        // need a Burger.protein_all function here as well
+    console.log(burger);
+    burger.burger_all(function (data) {
+        // need a burger.toppings_all function here?
+        // need a burger.condiment_all function here as well
+        // need a burger.protein_all function here as well
         var burgers = {
             burgers: data
         };
@@ -43,8 +43,8 @@ router.get("/create", function (req, res) {
     });
 });
 router.get("/edit", function (req, res) {
-    console.log(Burger);
-    Burger.burger_all(function (data) {
+    console.log(burger);
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -53,8 +53,8 @@ router.get("/edit", function (req, res) {
     });
 });
 router.get("/menu", function (req, res) {
-    console.log(Burger);
-    Burger.burger_all(function (data) {
+    console.log(burger);
+    burger.burger_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -65,7 +65,7 @@ router.get("/menu", function (req, res) {
 
 
 router.post("/api/burgers", function (req, res) {
-    Burger.burger_create(
+    burger.burger_create(
         [
             "burger_name", "burger_description"
         ], // not ssure if req.body.name or not?
@@ -81,7 +81,7 @@ router.put("/api/burgers/:burger_id", (req, res) => {
     console.log("condition", condition);
 
 
-    Burger.burger_update({
+    burger.burger_update({
         current_menu: req.body.current_menu
     }, condition, function (result) {
         if (result.changeRows == 0) {
@@ -93,7 +93,7 @@ router.put("/api/burgers/:burger_id", (req, res) => {
     // const id = req.params.burger_id;
     // console.log(id);
 
-    // Burger.burger_update([req.body.current_menu], id, result => {
+    // burger.burger_update([req.body.current_menu], id, result => {
     //     if (result.changeRows == 0) {
     //         return res.status(404).end();
     //     } else {
@@ -111,7 +111,7 @@ module.exports = router;
 
 // console.log('condition', condition);
 
-// Burger.burger_update(
+// burger.burger_update(
 //     {
 //         burger_update: req.body.burger_update
 //     },
