@@ -1,7 +1,11 @@
+{{!-- CURRENT PAGE: ("/edit") --}}
+
+{{!-------- TODO - PART 3: EDIT PAGE ("/edit") --}}
 <div class="d-flex h-100 text-center text-white -bg-dark">
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="picture">
 
+        {{!----------- TODO - a. Top menu for Home, About --}}
         <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">Burger Menu</h3>
@@ -12,22 +16,10 @@
                 </nav>
             </div>
         </header>
-        <main class="px-3">
-            {{#each burgers}}
-            {{#unless current_menu}}
-            {{>burgers/burger-block current_menu=true}}
-            {{/unless}}
-            {{/each}}
-        </main>
+        {{!----------- TODO - b. Card(s), based off of all non-menu prebuilt burgers. --}}
+        {{!-------------- TODO - i. Each card has an image, title, description, price --}}
+        {{!-------------- TODO - ii. Each card has two buttons on the bottom, 1. Add to Menu, and 2. Delete Burger --}}
 
-        <form class="create-form">
-
-            <div class="form-group">
-                <label for="ca">Burger Name:</label>
-                <input type="text" id="ca" name="name">
-            </div>
-
-            <button type="submit">Add Burger</button>
         </form>
     </div>
 </div>
