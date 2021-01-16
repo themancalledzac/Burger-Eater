@@ -90,34 +90,9 @@ router.put("/api/burgers/:burger_id", (req, res) => {
             res.status(200).end();
         }
     });
-    // const id = req.params.burger_id;
-    // console.log(id);
 
-    // burger.burger_update([req.body.current_menu], id, result => {
-    //     if (result.changeRows == 0) {
-    //         return res.status(404).end();
-    //     } else {
-    //         res.status(200).end();
-    //     }
-    // });
 });
 
 module.exports = router;
 
 
-
-
-// const condition = `id = ${req.params.burger_id}`
-
-// console.log('condition', condition);
-
-// burger.burger_update(
-//     {
-//         burger_update: req.body.burger_update
-//     },
-//     condition,
-//     data => {
-//         if (data.changeRows === 0) return res.status(404).end();
-//         res.status(200).end();
-//     }
-// );
