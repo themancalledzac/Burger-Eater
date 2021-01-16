@@ -1,0 +1,15 @@
+
+
+@media (min-width: 48em) {
+    .masthead-brand {
+        float: left;
+    }
+}
+.mx-auto {
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+.cover-container {
+    min-height: 1000px;
+}

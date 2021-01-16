@@ -28,23 +28,20 @@ router.get("/about", function (req, res) {
 });
 router.get("/create", function (req, res) {
     console.log(burger);
-    burger.burger_all(function (data) {
+    burger.select_all(function (data) {
         // need a burger.toppings_all function here?
         // need a burger.condiment_all function here as well
         // need a burger.protein_all function here as well
         var burgers = {
             burgers: data
         };
-        var toppings = {
-            toppings: data
-        }
         console.log(burgers);
-        res.render("create", burgers, toppings);
+        res.render("create", burgers);
     });
 });
 router.get("/edit", function (req, res) {
     console.log(burger);
-    burger.burger_all(function (data) {
+    burger.select_all(function (data) {
         var hbsObject = {
             burgers: data
         };
@@ -54,7 +51,7 @@ router.get("/edit", function (req, res) {
 });
 router.get("/menu", function (req, res) {
     console.log(burger);
-    burger.burger_all(function (data) {
+    burger.select_all(function (data) {
         var hbsObject = {
             burgers: data
         };

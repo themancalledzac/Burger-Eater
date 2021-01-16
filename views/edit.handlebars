@@ -10,12 +10,20 @@
             <div>
                 <h3 class="float-md-start mb-0">Burger Menu</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link active" aria-current="page" href="index.handlebars">Home</a>
-                    <a class="nav-link" href="layouts/menuCreator.handlebars">Create</a>
-                    <a class="nav-link" href="layouts/about.hanlebars">About</a>
+                    <a href="/" class="nav-link active" aria-current="page">Home</a>
+                    <a class="nav-link" href="/menu">Menu</a>
+                    <a class="nav-link" href="/about">About</a>
                 </nav>
             </div>
         </header>
+        <div>
+            {{#each burgers}}
+            {{#unless current_menu}}
+            {{>burgers/burger_card current_menu=false}}
+            {{/unless}}
+            {{/each}}
+
+        </div>
         {{!----------- TODO - b. Card(s), based off of all non-menu prebuilt burgers. --}}
         {{!-------------- TODO - i. Each card has an image, title, description, price --}}
         {{!-------------- TODO - ii. Each card has two buttons on the bottom, 1. Add to Menu, and 2. Delete Burger --}}

@@ -22,22 +22,17 @@ $(() => {
         );
     });
 
-    // $(".edit-burger").on("click", function (event) {
-    //     var id = $(this).data("burger_id");
-    //     var newMenu = $(this).data("newMenu");
+    $(".burger-edit").on("click", function (event) {
+        var id = $(this).data("burger_id");
 
-    //     var newMenuState = {
-    //         menu: newMenu
-    //     };
-
-    //     $.ajax("/api/burgers/" + id, {
-    //         type: "PUT",
-    //         data: newMenuState
-    //     }).then(
-    //         function () {
-    //             console.log("changed menu to", newMenu);
-    //             location.reload();
-    //         }
-    //     );
-    // });
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newMenuState
+        }).then(
+            function () {
+                console.log("changed menu to", newMenu);
+                location.reload();
+            }
+        );
+    });
 });
