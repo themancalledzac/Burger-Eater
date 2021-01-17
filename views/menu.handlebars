@@ -11,11 +11,19 @@
                 <h3 class="float-md-start mb-0">Burger Menu</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="/menu">Menu</a>
+                    <a class="nav-link" href="/edit">Edit</a>
                     <a class="nav-link" href="/about">About</a>
                 </nav>
             </div>
         </header>
+        <div class="row">
+            {{#each burgers}}
+            {{#if current_menu}}
+            {{>burgers/burger_card current_menu=false}}
+            {{/if}}
+            {{/each}}
+        </div>
+
         {{!----------- TODO - b. Card(s), based off each current-menu burgers --}}
         {{!-------------- TODO - i. Each card has image, title, description, price --}}
         {{!-------------- TODO - ii. Each card has one button on bottom, 1. Remove From Menu --}}

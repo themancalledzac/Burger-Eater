@@ -59,29 +59,29 @@ var orm = {
             cb(result);
         });
     },
+    // UPDATE burgers SET current_menu=true WHERE burger_id = 3
+    // burger_update: function (table, objColVals, condition, cb) {
+    //     console.log(objColVals);
+    //     var queryString = "UPDATE " + table;
+    //     queryString += " SET ";
+    //     queryString += objToSql(objColVals);;
+    //     queryString += " WHERE ";
+    //     queryString += condition;
+    //     console.log(queryString);
+    //     connection.query(queryString, function (err, result) {
+    //         if (err) { throw err; }
+    //         cb(result);
+    //     });
+    // "INSERT INTO `burgers` SET current_menu=true WHERE `current_menu` = 'true'"
     burger_update: function (table, objColVals, condition, cb) {
-        console.log(objColVals);
-        var queryString = "UPDATE " + table;
-        queryString += " SET ";
-        queryString += objToSql(objColVals);;
-        queryString += " WHERE ";
-        queryString += condition;
+        let valFinal = objToSql(objColVals);
+        var queryString = "UPDATE " + table + " SET " + valFinal + " WHERE " + condition;
         console.log(queryString);
+
         connection.query(queryString, function (err, result) {
-            if (err) { throw err; }
+            if (err) throw err;
             cb(result);
         });
-
-
-        // var queryString = "UPDATE ?? SET current_menu = ? WHERE burger_id =" + id;
-
-        // console.log(queryString);
-        // connection.query(queryString, [table, vals,], function (err, result) {
-        //     if (err) {
-        //         throw err;
-        //     }
-        //     cb(result);
-        // })
     },
     toppings_all: function (tableInput, callback) {
         var queryString = "SELECT * FROM toppings";

@@ -16,13 +16,16 @@
                 </nav>
             </div>
         </header>
-        <div>
-            {{#each burgers}}
-            {{#unless current_menu}}
-            {{>burgers/burger_card current_menu=false}}
-            {{/unless}}
-            {{/each}}
+        <div class="container">
+            <div class="row">
 
+                {{#each burgers}}
+                {{#unless current_menu}}
+                {{>burgers/burger_card current_menu=true}}
+                {{/unless}}
+                {{/each}}
+
+            </div>
         </div>
         {{!----------- TODO - b. Card(s), based off of all non-menu prebuilt burgers. --}}
         {{!-------------- TODO - i. Each card has an image, title, description, price --}}

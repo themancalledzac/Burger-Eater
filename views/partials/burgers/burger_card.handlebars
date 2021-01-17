@@ -2,14 +2,14 @@
 {{!-- Add random images? another api perhaps --}}
 {{!-- --}}
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+<div class="col-md-4">
+    {{!-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
     <div class="card-body">
         <h2 class="card-title">{{burger_name}}</h2>
         <p class="card-text">{{burger_description}}</p>
         <h5 class="card-text">{{price}}</h5>
-        <button href="../../edit-single.handlebars" class="burger-editor btn btn-lg btn-secondary">Edit</button>
-        <button class="menu-change" data-id="{{burger_id}}" data-newMenu="{{current_menu}}">
-            {{#if current_menu}}Add to menu{{else}}Remove from menu{{/if}}
+        <button class="btn btn-lg btn-primary menu-change" data-id="{{burger_id}}" data-newMenu="{{current_menu}}">
+            {{#if current_menu}}Add to Menu{{else}}Remove From Menu{{/if}}
+            <button href="/edit-single" class="burger-editor btn btn-lg btn-info" data-id="{{burger_id}}">Edit</button>
     </div>
 </div>
