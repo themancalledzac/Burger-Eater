@@ -1,4 +1,4 @@
-<h1 align="center">Employee Tracker</h1>
+<h1 align="center">Burger Menu Creator</h1>
 
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/themancalledzac/Burger-Eater" />
