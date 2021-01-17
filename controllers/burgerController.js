@@ -67,11 +67,10 @@ router.get("/menu", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
     burger.burger_create(
-        [
-            "burger_name", "burger_description"
-        ], // not ssure if req.body.name or not?
-        [req.body.burger_name, req.body.burger_description], function (result) {
-            res.json({ id: result.insertId });
+        ["burger_name", "burger_description", "price"],
+        // not ssure if req.body.name or not?
+        [req.body.burger_name, req.body.burger_description, req.body.price], function (result) {
+            res.json({ burger_id: result.insertId });
         }
     );
 });

@@ -22,6 +22,26 @@ $(() => {
         );
     });
 
+    $(".burger-create").on("submit", function (event) {
+        event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#burger").val().trim(),
+            burger_description: $("#description").val().trim(),
+            price: $("#price").val().trim()
+        };
+
+        // send the POST request.
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("created a new burger");
+            }
+        )
+    })
+
     $(".burger-edit").on("click", function (event) {
         var id = $(this).data("burger_id");
 

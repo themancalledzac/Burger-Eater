@@ -19,6 +19,26 @@
         {{!----------- TODO - b. Card with 3 entries, Title(burger_name), Description(burger_description), and
         Price(price) --}}
         {{!----------- TODO = c. On hitting create, will be redirected to the EDIT PAGE ("/edit") --}}
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Create a Burger</h4>
+            <form class="burger-create">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="burger">Burger Name</label>
+                        <input type="text" id="burger" name="burger">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" name="price">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Burger</button>
+            </form>
+        </div>
 
     </div>
 </div>
