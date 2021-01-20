@@ -1,3 +1,8 @@
+const models = require("../models");
+const Toppings = require("../models/toppings.js");
+const Condiments = require("../models/condiments.js");
+const Proteins = require("../models/proteins.js");
+
 module.exports = function (sequelize, DataTypes) {
     const Burgers = sequelize.define("Burgers", {
         burgerName: {
@@ -23,11 +28,13 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         menu: {
-            type: DataTypes.BOOLSEAN,
+            type: DataTypes.BOOLEAN,
             defaultValue: false,
         }
     });
-    Burgers.belongsToMany(models.Toppings, { through: "burgerToppings" });
-    Burgers.belongsToMany(models.Condiments, { through: "burgerCondiments" });
-    Burgers.belongsToMany(models.Proteins, { through: "burgerProteins" });
-}
+    // Burgers.belongsToMany(Toppings, { through: "burgerToppings" });
+    // Burgers.belongsToMany(Condiments, { through: "burgerCondiments" });
+    // Burgers.belongsToMany(Proteins, { through: "burgerProteins" });
+
+    return Burgers;
+};

@@ -8,6 +8,7 @@ const db = require("../models/index.js");
 
 // Create all our routes and set up logic within those routes where required.
 
+// ----------------------------------------INDEX("/")--------------------------------------------------------
 function splashPage(req, res) {
     res.render("index");
 };
@@ -17,6 +18,7 @@ function splashPage(req, res) {
 
 // });
 
+// ----------------------------------------ABOUT("/about")-----------------------------------------------------
 function aboutPage(req, res) {
     res.render("about");
 };
@@ -32,6 +34,7 @@ function aboutPage(req, res) {
 //     });
 // });
 
+// -----------------------------------------CREATE("/create")
 function createBurger(req, res) {
     burger.selectAllBurger(function (data) {
         const burgers = {
@@ -123,32 +126,33 @@ router.post("/api/burgers", function (req, res) {
     );
 });
 
-router.put("/api/burgers/:burger_id", (req, res) => {
+// TODO
+// router.put("/api/burgers/:burger_id", (req, res) => {
 
-    var condition = "burger_id = " + req.params.burger_id;
-    console.log("condition", condition);
+//     var condition = "burger_id = " + req.params.burger_id;
+//     console.log("condition", condition);
 
 
-    burger.addToMenu({
-        current_menu: req.body.current_menu
-    }, condition, function (result) {
-        if (result.changeRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
+//     burger.addToMenu({
+//         current_menu: req.body.current_menu
+//     }, condition, function (result) {
+//         if (result.changeRows == 0) {
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
 
-});
+// });
 
 // new export
-modeule.exports = {
+module.exports = {
     splashPage,
     aboutPage,
     createBurger,
     editPage,
     editBurger,
-    addToMenu,
+    // addToMenu,
 
 
 

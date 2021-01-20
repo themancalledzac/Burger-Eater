@@ -1,3 +1,5 @@
+const models = require("../models");
+
 module.exports = function (sequelize, DataTypes) {
     const Proteins = sequelize.define("Proteins", {
         proteinName: {
@@ -20,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0,
         }
     });
-    Proteins.belongsToMany(models.Burgers, { through: "burgerProteins" });
+    // Proteins.belongsToMany(models.Burgers, { through: "burgerProteins" });
 
     return Proteins;
 };
