@@ -1,4 +1,4 @@
-const models = require("../models");
+// const models = require("../models");
 
 module.exports = function (sequelize, DataTypes) {
     const Toppings = sequelize.define("Toppings", {
@@ -22,7 +22,15 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0,
         }
     });
-    // Toppings.belongsToMany(models.Burgers, { through: "burgerToppings" });
 
+    Toppings.associate = models => {
+
+        Toppings.belongsTo(models.BurgerToppings, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+    // Toppings.belongsToMany(Burgers, { through: "burgerToppings", as: "Burgers", foreignKey: "id" });
     return Toppings;
 };
