@@ -8,42 +8,36 @@ const db = require("../models/index.js");
 
 // Create all our routes and set up logic within those routes where required.
 
-// ----------------------------------------INDEX("/")--------------------------------------------------------
+// -----------------------------------------INDEX("/")----------------------------------------------------------
 function splashPage(req, res) {
     res.render("index");
 };
 
-// router.get("/", function (req, res) {
-//     res.render("index");
-
-// });
-
-// ----------------------------------------ABOUT("/about")-----------------------------------------------------
+// -----------------------------------------ABOUT("/about")-----------------------------------------------------
 function aboutPage(req, res) {
     res.render("about");
 };
 
-// router.get("/about", function (req, res) {
-//     console.log(burger);
-//     burger.select_all(function (data) {
-//         var hbsObject = {
+// -----------------------------------------CREATE("/create")---------------------------------------------------
+function createBurger(req, res) {
+    res.render("create");
+};
+
+// -----------------------------------------MENU("/menu")-------------------------------------------------------
+function menuPage(req, res) {
+    res.render("menu");
+};
+
+// function createBurger(req, res) {
+//     burger.selectAllBurger(function (data) {
+//         const burgers = {
 //             burgers: data
 //         };
-//         console.log(hbsObject);
-//         res.render("about", hbsObject);
+//         console.log(burgers);
+//         res.render("create", burgers);
+//         // res.render("create", burgers);
 //     });
-// });
-
-// -----------------------------------------CREATE("/create")
-function createBurger(req, res) {
-    burger.selectAllBurger(function (data) {
-        const burgers = {
-            burgers: data
-        };
-        console.log(burgers);
-        res.render("create", burgers);
-    });
-};
+// };
 
 //        // router.get("/create", function (req, res) {
 //        //     console.log(burger);
@@ -63,7 +57,8 @@ function createBurger(req, res) {
 // TODO - here lies the example
 function editPage(req, res) {
     db.Burgers.findAll({}).then(function (dbBurger) {
-        res.json(dbBurger);
+        res.render("edit", dbBurger);
+        // res.json(dbBurger);
     });
     // burger.selectAllBurger(function (data) {
     //     var hbsObject = {
@@ -85,46 +80,46 @@ function editPage(req, res) {
 //     });
 // });
 
-function editBurger(req, res) {
-    burger.selectOneBurger(function (data) {
-        var hbsObject = {
-            burgers: data
-        };
-        res.render("editBurger", hbsObject);
-    });
-}
+// function editBurger(req, res) {
+//     burger.selectOneBurger(function (data) {
+//         var hbsObject = {
+//             burgers: data
+//         };
+//         res.render("editBurger", hbsObject);
+//     });
+// }
 
-router.get("/edit-single", function (req, res) {
-    console.log(burger);
-    burger.selectAllBurger(function (data) {
-        var hbsObject = {
-            burgers: data
-        };
-        console.log(hbsObject);
-        res.render("edit", hbsObject);
-    });
-});
-router.get("/menu", function (req, res) {
-    console.log(burger);
-    burger.selectAllBurger(function (data) {
-        var hbsObject = {
-            burgers: data
-        };
-        console.log(hbsObject);
-        res.render("menu", hbsObject);
-    });
-});
+// router.get("/edit-single", function (req, res) {
+//     console.log(burger);
+//     burger.selectAllBurger(function (data) {
+//         var hbsObject = {
+//             burgers: data
+//         };
+//         console.log(hbsObject);
+//         res.render("edit", hbsObject);
+//     });
+// });
+// router.get("/menu", function (req, res) {
+//     console.log(burger);
+//     burger.selectAllBurger(function (data) {
+//         var hbsObject = {
+//             burgers: data
+//         };
+//         console.log(hbsObject);
+//         res.render("menu", hbsObject);
+//     });
+// });
 
 
-router.post("/api/burgers", function (req, res) {
-    burger.burger_create(
-        ["burger_name", "burger_description", "price"],
-        // not ssure if req.body.name or not?
-        [req.body.burger_name, req.body.burger_description, req.body.price], function (result) {
-            res.json({ burger_id: result.insertId });
-        }
-    );
-});
+// router.post("/api/burgers", function (req, res) {
+//     burger.burger_create(
+//         ["burger_name", "burger_description", "price"],
+//         // not ssure if req.body.name or not?
+//         [req.body.burger_name, req.body.burger_description, req.body.price], function (result) {
+//             res.json({ burger_id: result.insertId });
+//         }
+//     );
+// });
 
 // TODO
 // router.put("/api/burgers/:burger_id", (req, res) => {
@@ -150,8 +145,9 @@ module.exports = {
     splashPage,
     aboutPage,
     createBurger,
+    menuPage,
     editPage,
-    editBurger,
+    // editBurger,
     // addToMenu,
 
 

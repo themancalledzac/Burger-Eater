@@ -1,4 +1,4 @@
-var db = require("../models");
+// var db = require("../models");
 
 var burgerController = require("../controllers/burgerController.js");
 
@@ -10,7 +10,7 @@ module.exports = function (app) {
 
     app.get("/create", burgerController.createBurger);
 
-    app.get("/editPage", burgerController.editPage);
+    app.get("/edit", burgerController.editPage);
 
-    app.get("/editBurger", burgerController.editBurger);
+    app.get("/menu", burgerController.menuPage);
 }
