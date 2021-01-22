@@ -7,16 +7,17 @@ module.exports = function (sequelize, DataTypes) {
 
     BurgerToppings.associate = models => {
 
-        BurgerToppings.hasMany(models.Burgers, {
+        BurgerToppings.belongsTo(models.Burgers, {
             foreignKey: {
                 allowNull: false
             }
         });
-        BurgerToppings.hasMany(models.Toppings, {
+        BurgerToppings.belongsTo(models.Toppings, {
             foreignKey: {
                 allowNull: false
             }
         })
+        // add belongs to for protein AND condiments IN HERE
     };
 
 

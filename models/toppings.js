@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Toppings.associate = models => {
 
-        Toppings.belongsTo(models.BurgerToppings, {
+        Toppings.hasMany(models.BurgerToppings, {
             foreignKey: {
                 allowNull: false
             }

@@ -1,9 +1,6 @@
 
-
-// const { on } = require("nodemon");
 $(() => {
 
-    // really need this to be onclick, if 0, change to 1, if 1, change to 0. shouldn't that be easy?
     $(".menu-change").on("click", function (event) {
         var id = $(this).data("id");
         var newMenu = $(this).data("newmenu");
@@ -29,10 +26,25 @@ $(() => {
         event.preventDefault();
 
         var newBurger = {
-            burger_name: $("#burger").val().trim(),
-            burger_description: $("#description").val().trim(),
-            price: $("#price").val().trim()
+            burgerName: $("#burger").val().trim(),
+            // burgerToppings: how do we include toppings here??
+            burgerDescription: $("#description").val().trim(),
+            // burgerPrice needs to be addition of all burgerToppings (future addition of condiments/protein as well)
+            burgerPrice: $("#price").val().trim()
         };
+        // for each topping selected
+        // var burgerToppings = {
+        //     burgerId:
+        //         toppingId: // new row for EACH topping
+        // };
+        // var burgerProteins = {
+        //     burgerId:
+        //     proteinId:
+        // };
+        // var burgerCondiments = {
+        //     burgerId:
+        //     proteinId:
+        // };
 
         // send the POST request.
         $.ajax("/api/burgers", {
@@ -41,8 +53,24 @@ $(() => {
         }).then(
             function () {
                 console.log("created a new burger");
+                location.replace("/");
             }
-        )
+        );
+        // API CALL FOR BURGERTOPPINGS TABLE
+        // $.ajax("/api/burgersToppings", {
+        //     type: "POST",
+        //     data: newBurgerTotal
+        // })
+        // // API CALL FOR BURGERPROTEINS TABLE
+        // $.ajax("/api/burgersToppings", {
+        //     type: "POST",
+        //     data: newBurgerTotal
+        // })
+        // // API CALL FOR BURGERCONDIMENTS TABLE
+        // $.ajax("/api/burgersToppings", {
+        //     type: "POST",
+        //     data: newBurgerTotal
+        // })
     })
 
     $(".burger-edit").on("click", function (event) {

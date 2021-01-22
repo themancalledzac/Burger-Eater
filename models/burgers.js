@@ -4,7 +4,7 @@
 // const Condiments = require("../models/condiments.js");
 // const Proteins = require("../models/proteins.js");
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     const Burgers = sequelize.define("Burgers", {
         burgerName: {
             type: DataTypes.STRING,
@@ -39,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Burgers.associate = models => {
 
-        Burgers.belongsTo(models.BurgerToppings, {
+        Burgers.hasMany(models.BurgerToppings, {
             foreignKey: {
                 allowNull: false
             }

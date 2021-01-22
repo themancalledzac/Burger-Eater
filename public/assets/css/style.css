@@ -44,6 +44,12 @@ a {
     max-width: 33.33333%;
 }
 
+@media (min-width: 768px) {
+    .col-md-6 {
+        width: 100%
+    }
+}
+
 /* .mb-auto {
     margin-bottom: 5em;
 } */

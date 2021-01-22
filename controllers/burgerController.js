@@ -4,56 +4,41 @@ var router = express.Router();
 
 // import the model (burger.js) to use its database functions.
 const burger = require("../models/burgers.js");
-const db = require("../models/index.js");
+const db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 
-// -----------------------------------------INDEX("/")----------------------------------------------------------
+// -----------------------------------------INDEX("/")---------------------------------------------------------------
 function splashPage(req, res) {
     res.render("index");
 };
 
-// -----------------------------------------ABOUT("/about")-----------------------------------------------------
+// -----------------------------------------ABOUT-PAGE("/about")-----------------------------------------------------
 function aboutPage(req, res) {
     res.render("about");
 };
 
-// -----------------------------------------CREATE("/create")---------------------------------------------------
-function createBurger(req, res) {
-    res.render("create");
+// -----------------------------------------CREATE-PAGE("/create")---------------------------------------------------
+function createPage(req, res) {
+    // call toppings
+    db.Toppings.findAll({
+        // where: {
+        //     toppingStock: {
+        //         [Op.lt]: 1,
+        //     }
+        // }
+    }).then(function (dbToppings) {
+
+        res.render("create", dbToppings);
+    });
 };
 
-// -----------------------------------------MENU("/menu")-------------------------------------------------------
+// -----------------------------------------MENU-PAGE("/menu")-------------------------------------------------------
 function menuPage(req, res) {
     res.render("menu");
 };
 
-// function createBurger(req, res) {
-//     burger.selectAllBurger(function (data) {
-//         const burgers = {
-//             burgers: data
-//         };
-//         console.log(burgers);
-//         res.render("create", burgers);
-//         // res.render("create", burgers);
-//     });
-// };
-
-//        // router.get("/create", function (req, res) {
-//        //     console.log(burger);
-//        //     burger.select_all(function (data) {
-//        //         // need a burger.toppings_all function here?
-//        //         // need a burger.condiment_all function here as well
-//        //         // need a burger.protein_all function here as well
-//        //         var burgers = {
-//        //             burgers: data
-//        //         };
-//        //         console.log(burgers);
-//        //         res.render("create", burgers);
-//        //     });
-//        // });
-
-
+// -------------------------------------------EDIT-PAGE("/edit")---------------------------------------------------
 // TODO - here lies the example
 function editPage(req, res) {
     db.Burgers.findAll({}).then(function (dbBurger) {
@@ -68,6 +53,49 @@ function editPage(req, res) {
     //     res.render("editPage", hbsObject);
     // });
 };
+// -----------------------------------------CREATE-NEW("/???")-------------------------------------------------------
+
+function createBurger(req, res) {
+    db.Burgers.create(
+
+        req.body).then(function (dbBurger) {
+            res.json(dbBurger);
+        });
+};
+// router.post("/api/burgers", function (req, res) {
+//     burger.burger_create(
+//         ["burger_name", "burger_description", "price"],
+//         // not ssure if req.body.name or not?
+//         [req.body.burger_name, req.body.burger_description, req.body.price], function (result) {
+//             res.json({ burger_id: result.insertId });
+//         }
+//     );
+// });
+
+// ------------what is this shit?---------------------------
+// function createBurger(req, res) {
+//     burger.selectAllBurger(function (data) {
+//         const burgers = {
+//             burgers: data
+//         };
+//         console.log(burgers);
+//         res.render("create", burgers);
+//         // res.render("create", burgers);
+//     });
+// };
+//        // router.get("/create", function (req, res) {
+//        //     console.log(burger);
+//        //     burger.select_all(function (data) {
+
+//        //         var burgers = {
+//        //             burgers: data
+//        //         };
+//        //         console.log(burgers);
+//        //         res.render("create", burgers);
+//        //     });
+//        // });
+
+
 
 // router.get("/edit", function (req, res) {
 //     console.log(burger);
@@ -111,15 +139,6 @@ function editPage(req, res) {
 // });
 
 
-// router.post("/api/burgers", function (req, res) {
-//     burger.burger_create(
-//         ["burger_name", "burger_description", "price"],
-//         // not ssure if req.body.name or not?
-//         [req.body.burger_name, req.body.burger_description, req.body.price], function (result) {
-//             res.json({ burger_id: result.insertId });
-//         }
-//     );
-// });
 
 // TODO
 // router.put("/api/burgers/:burger_id", (req, res) => {
@@ -144,17 +163,14 @@ function editPage(req, res) {
 module.exports = {
     splashPage,
     aboutPage,
-    createBurger,
+    createPage,
     menuPage,
     editPage,
+    createBurger,
     // editBurger,
     // addToMenu,
-
-
-
 };
 
-// module.exports = router;
 
 
 

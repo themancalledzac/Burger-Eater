@@ -31,6 +31,19 @@
                         <label for="price">Price</label>
                         <input type="text" id="price" name="price">
                     </div>
+                    <div class="col-md-6 mb-3">
+                        <tr>
+                            <th><input type="checkbox" id="selectall" /></th>
+                            <th>Topping</th>
+                            <th>price</th>
+                        </tr>
+                        {{#each toppings}}
+                        {{!-- {{#if toppingStock}} --}}
+                        {{>burgers/topping_card}}
+                        {{!-- {{/if}} --}}
+                        {{/each}}
+                    </div>
+                    {{!-- dropdown multi selection choose as many as you want toppings --}}
                 </div>
                 <div class="mb-3">
                     <label for="description">Description</label>
