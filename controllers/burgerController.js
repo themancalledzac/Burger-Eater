@@ -4,7 +4,9 @@ var router = express.Router();
 
 // import the model (burger.js) to use its database functions.
 const burger = require("../models/burgers.js");
-const db = require("../models");
+const toppings = require("../models/toppings.js");
+const db = require("../models/index.js");
+const { query } = require("express");
 
 // Create all our routes and set up logic within those routes where required.
 
@@ -21,7 +23,12 @@ function aboutPage(req, res) {
 // -----------------------------------------CREATE-PAGE("/create")---------------------------------------------------
 function createPage(req, res) {
     // call toppings
+    console.log(db.Toppings);
     db.Toppings.findAll({
+        // where: query,
+        // include: [{
+        //     model: db.Toppings
+        // }]
         // where: {
         //     toppingStock: {
         //         [Op.lt]: 1,
@@ -71,6 +78,17 @@ function createBurger(req, res) {
 //         }
 //     );
 // });
+
+// -----------------------------------------API ROUTES()------------------------------------------------------------
+
+// -----------------------------------------API/TOPPINGS()----------------------------------------------------------
+
+function apiToppings(req, res) {
+    db.Toppings.findAll({}).then(function (dbToppings) {
+        console.log(dbToppings);
+        res.json(dbToppings);
+    });
+};
 
 // ------------what is this shit?---------------------------
 // function createBurger(req, res) {
@@ -167,6 +185,7 @@ module.exports = {
     menuPage,
     editPage,
     createBurger,
+    apiToppings,
     // editBurger,
     // addToMenu,
 };

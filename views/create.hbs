@@ -37,17 +37,25 @@
                             <th>Topping</th>
                             <th>price</th>
                         </tr>
-                        {{#each toppings}}
-                        {{!-- {{#if toppingStock}} --}}
-                        {{>burgers/topping_card}}
-                        {{!-- {{/if}} --}}
+                        {{#each toppingsD}}
+                        <br>
+                        <tr>
+                            <th align="center"><input type="checkbox" class="case" name="case"
+                                    value="{{Toppings.id}}" /></th>
+                            <th>{{this.name}}</th>
+                            <th>"price: "{{this.price}}</th>
+                        </tr>
+
+                        {{!-- {{>burgers/topping_card}} --}}
                         {{/each}}
                     </div>
                     {{!-- dropdown multi selection choose as many as you want toppings --}}
                 </div>
-                <div class="mb-3">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description">
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description">
+                    </div>
                 </div>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Burger</button>
             </form>
