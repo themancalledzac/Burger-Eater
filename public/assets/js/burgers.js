@@ -27,6 +27,13 @@ $(() => {
     $(".burger-create").on("submit", function (event) {
         event.preventDefault();
 
+        const toppings = [];
+
+        $("input:checkbox:checked").each(function () {
+            toppings.push(parseInt($(this).val()));
+            // console.log($(this).val());
+        });
+
         var newBurger = {
             burgerName: $("#burger").val().trim(),
             // burgerToppings: how do we include toppings here??
@@ -36,8 +43,8 @@ $(() => {
         };
         // for each topping selected
         // var burgerToppings = {
-        //     burgerId:
-        //         toppingId: // new row for EACH topping
+        //         toppingId:  
+        //         // new row for EACH topping
         // };
         // var burgerProteins = {
         //     burgerId:
@@ -51,7 +58,10 @@ $(() => {
         // send the POST request.
         $.ajax("/api/burgers", {
             type: "POST",
-            data: newBurger
+            data: {
+                newBurger,
+                toppings
+            }
         }).then(
             function () {
                 console.log("created a new burger");

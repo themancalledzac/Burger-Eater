@@ -22,18 +22,31 @@ module.exports = function (app) {
     app.get("/create", (req, res) => {
         db.Toppings.findAll()
             .then(toppings => {
-                const context = {
-                    toppingsD: toppings.map(Toppings => {
-                        return {
-                            name: Toppings.toppingName,
-                            price: Toppings.toppingPrice,
-                            stock: Toppings.toppingStock
-                        }
-                    })
-                }
-                res.render("create", {
-                    toppingsD: context.toppingsD
+                // console.log(toppings);
+                const toppingsArray = toppings.map(topping => {
+                    return {
+                        id: topping.dataValues.id,
+                        toppingName: topping.dataValues.toppingName,
+                        toppingPrice: topping.dataValues.toppingPrice,
+                        toppingStock: topping.dataValues.toppingStock,
+                    }
+
                 });
+                // console.log(toppingsArray);
+                // creating an object allToppings, giving it a KEY: of toppings, with a value of the array of all the toppings(from before)
+                const allToppings = {
+                    toppings: toppingsArray
+                }
+                // const context = {
+                //     toppingsD: toppings.map(Toppings => {
+                //         return {
+                //             name: Toppings.toppingName,
+                //             price: Toppings.toppingPrice,
+                //             stock: Toppings.toppingStock
+                //         }
+                //     })
+                // }
+                res.render("create", allToppings);
                 // console.log(test);
             })
             .catch(err => console.log(err))
@@ -70,7 +83,10 @@ module.exports = function (app) {
     // app.get("/create", burgerController.createPage);
 
     // this page still requires an api call, do we keep it in the html routes? why or why not?
-    app.get("/edit", burgerController.editPage);
+    app.get("/edit",
+        // on load
+        // call DB, render
+        burgerController.editPage);
 
     // this page still requires an api call, do we keep it in the html routes? why or why not?
     app.get("/menu", burgerController.menuPage);

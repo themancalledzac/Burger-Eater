@@ -37,13 +37,12 @@
                             <th>Topping</th>
                             <th>price</th>
                         </tr>
-                        {{#each toppingsD}}
+                        {{#each toppings}}
                         <br>
                         <tr>
-                            <th align="center"><input type="checkbox" class="case" name="case"
-                                    value="{{Toppings.id}}" /></th>
-                            <th>{{this.name}}</th>
-                            <th>"price: "{{this.price}}</th>
+                            <th align="center"><input type="checkbox" class="case" name="case" value="{{id}}" /></th>
+                            <th>{{toppingName}}</th>
+                            <th>"price: "{{toppingPrice}}</th>
                         </tr>
 
                         {{!-- {{>burgers/topping_card}} --}}
